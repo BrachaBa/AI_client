@@ -8,17 +8,27 @@
 <style>
   .page-background {
     background-color: #f8f9fa;
+    /* צבע רקע */
+    /* background-image: url('assets/background.jpg'); תמונת רקע */
     background-size: cover;
+    /* שמירה על יחסי הגובה והרוחב */
     background-position: center;
+    /* מיקום התמונה במרכז */
     padding: 20px;
+    /* מרווחים מסביב */
     border-radius: 10px;
+    /* פינות מעוגלות */
   }
 
   .form-container {
     background-color: rgba(255, 255, 255, 0.9);
+    /* רקע חלק */
     padding: 30px;
+    /* מרווחים פנימיים */
     border-radius: 10px;
+    /* פינות מעוגלות */
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    /* צללית */
   }
 </style>
 
@@ -37,6 +47,10 @@
           </select>
           <input *ngIf="event === 'other'" type="text" class="form-control mt-2" [(ngModel)]="customEvent"
             name="customEvent" placeholder="הזן את האירוע המבוקש">
+<<<<<<< HEAD
+=======
+
+>>>>>>> e7a0b07672d1dd5be02c48949e720cf8b5f8eda5
         </div>
 
         <div *ngIf="event === 'birthday'" class="form-group">
@@ -54,6 +68,10 @@
           </select>
           <input *ngIf="type === 'other'" type="text" class="form-control mt-2" [(ngModel)]="customType"
             name="customType" placeholder="הזן את סוג הברכה המבוקש">
+<<<<<<< HEAD
+=======
+
+>>>>>>> e7a0b07672d1dd5be02c48949e720cf8b5f8eda5
         </div>
 
         <div class="form-group">
