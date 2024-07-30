@@ -1,27 +1,77 @@
-# AIClient
+# AI Event Greeting Generator
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.0.
+## Overview
+This Angular project implements an AI-powered event greeting generator. Users can input details about an event, and the application will generate a customized greeting using AI.
 
-## Development server
+## Features
+- Bilingual support (Hebrew and English)
+- Event type selection (Birthday, Wedding, Anniversary, Custom)
+- Customizable greeting parameters (length, mood)
+- Dynamic form based on selected event type
+- AI-generated greetings
+- Option to regenerate different greetings
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Component Structure
 
-## Code scaffolding
+### MainScreenComponent
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+The main component of the application, `MainScreenComponent`, handles the user interface and interaction logic.
 
-## Build
+#### Key Properties:
+- `event`: Selected event type
+- `age`: Age input for birthday events
+- `type`: Greeting type (short, long, song, etc.)
+- `mood`: Greeting mood (happy, funny, serious, etc.)
+- `selectedLanguage`: Current interface language
+- `blessing`: Generated greeting text
+- `customEvent`, `customMood`, `customType`: For custom user inputs
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+#### Main Methods:
+- `generateBlessing()`: Submits user inputs to generate a greeting
+- `requestAnother()`: Clears current greeting for regeneration
+- `setLanguage(language: string)`: Switches interface language
 
-## Running unit tests
+## Service Integration
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+The component uses `GreetingService` to communicate with the backend API for greeting generation.
 
-## Running end-to-end tests
+## User Interface
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+The UI includes:
+- Language selection buttons
+- Dynamic form for event details
+- Conditional rendering based on user selections
+- Greeting display area
+- Responsive design with styled background
 
-## Further help
+## Styling
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+The component uses custom CSS for:
+- Page background
+- Form container styling
+- Responsive layout
+
+## Setup and Running
+
+1. Clone the repository
+2. Install dependencies: 
+```
+npm install
+```
+3. Start the Angular development server:
+```
+ng serve
+```
+4. Open a browser and navigate to `http://localhost:4200`
+
+## Note on Google Sign-In
+
+There's commented-out code for Google Sign-In integration. This feature is not currently active but can be implemented in future versions.
+
+## Future Enhancements
+- Activate Google Sign-In feature
+- Expand language options
+- Add more customization options for greetings
+
+## Contributing
+Contributions to improve the application are welcome. Please follow the standard pull request process.
