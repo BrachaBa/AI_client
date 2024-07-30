@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "source": ".dist/ai-client",
+    "source": "dist/ai-client",
     "ignore": [
       "firebase.json",
       "**/.*",
