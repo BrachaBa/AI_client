@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class GreetingService {
-  private apiUrl = 'http://localhost:3000/generate-greeting';
+  // private apiUrl = 'http://localhost:3000/generate-greeting';
+  private apiUrl = 'https://ai-server-k26q.onrender.com';
 
   constructor(private http: HttpClient) { }
 
