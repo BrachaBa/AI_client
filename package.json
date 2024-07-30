@@ -7,7 +7,8 @@
         "build": "ng build",
         "watch": "ng build --watch --configuration development",
         "test": "ng test",
-        "serve:ssr:AI_client": "node dist/ai-client/server/server.mjs"
+        "serve:ssr:AI_client": "node dist/ai-client/server/server.mjs",
+        "deploy": "firebase deploy --only functions"
     },
     "private": true,
     "dependencies": {

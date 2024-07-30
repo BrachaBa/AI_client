@@ -1,13 +1,13 @@
 {
   "hosting": {
-    "public": "dist/ai-client",
+    "source": ".dist/AI-client",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
     ],
     "frameworksBackend": {
-      "region": "europe-west1"
+      "region": "us-central1"
     }
   }
 }

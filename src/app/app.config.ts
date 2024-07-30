@@ -24,8 +24,9 @@ import { provideClientHydration } from '@angular/platform-browser';
 import { importProvidersFrom } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { AngularFireModule } from '@angular/fire/compat'; // ייבוא AngularFireModule
-import { firebaseConfig } from '../environments/environment'; // ייבוא environment
+// import { AngularFireModule } from '@angular/fire/compat'; // ייבוא AngularFireModule
+// import { firebaseConfig } from '../environments/environment'; // ייבוא environment
+
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
@@ -35,6 +36,6 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(),
     provideHttpClient(),
     importProvidersFrom(FormsModule),
-    importProvidersFrom(AngularFireModule.initializeApp(firebaseConfig)) // הוספת Firebase
+    // importProvidersFrom(AngularFireModule.initializeApp(firebaseConfig)) // הוספת Firebase
   ]
 };
