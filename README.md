@@ -1,21 +1,53 @@
 # AI Event Greeting Generator
 
 ## Overview
-This Angular project implements an AI-powered event greeting generator. Users can input details about an event, and the application will generate a customized greeting using AI.
+This project is an AI-powered greeting generator designed to create personalized greetings for various events. Users input basic information about the event, and the application uses the OpenAI API to generate a suitable greeting based on their preferences.
 
 ## Features
-- Bilingual support (Hebrew and English)
-- Event type selection (Birthday, Wedding, Anniversary, Custom)
-- Customizable greeting parameters (length, mood)
-- Dynamic form based on selected event type
-- AI-generated greetings
-- Option to regenerate different greetings
+- Personalized Greetings: Generate greetings based on event type, tone, length, and other user preferences.
+- Interactive Interface: Allows users to select options and view the generated greeting.
+- Dynamic Input: Depending on the chosen event, additional inputs are displayed (e.g., age for birthdays).
+- Multiple Options: Users can request a new greeting without re-entering all options.
+- Server-Side Testing: Includes meaningful test functions to ensure reliable operation.
 
-## Component Structure
+## Technologies
+- Node.js: JavaScript runtime for server-side development.
+- Express.js: Web framework for Node.js.
+- OpenAI API: Service for generating text-based content.
+- CORS: Middleware for handling Cross-Origin Resource Sharing.
 
-### MainScreenComponent
+### Installation
 
-The main component of the application, `MainScreenComponent`, handles the user interface and interaction logic.
+1. Clone the Repository:
+    git clone <repository-url>
+    cd <repository-directory>
+
+2. Install Dependencies
+    Ensure you have Node.js installed. Then, install the necessary packages:
+    npm install
+
+3. Set Up Environment Variables
+    Create a .env file in the root directory of the project and add your OpenAI API key:
+    OPENAI_API_KEY=your_openai_api_key_here
+    PORT=3000
+
+4. Run the Application
+    Start the server:
+    npm start
+
+The server will run on http://localhost:3000 by default.
+
+# API Endpoint
+'POST /generate-greeting'
+Generates a greeting based on the provided user inputs.
+Request Body
+{
+  "eventType": "string",
+  "tone": "string",
+  "length": "string",
+  "language": "string",
+  "age": "optional integer"
+}
 
 #### Key Properties:
 - `event`: Selected event type
@@ -75,3 +107,5 @@ There's commented-out code for Google Sign-In integration. This feature is not c
 
 ## Contributing
 Contributions to improve the application are welcome. Please follow the standard pull request process.
+
+
