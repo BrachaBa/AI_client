@@ -75,14 +75,25 @@ loading: any;
 
   generateBlessing(): void {
     const eventType = this.event === 'other' ? this.customEvent : this.event;
-    const body = { 
+    const body: {
+      eventType: string,
+      length: string,
+      tone: string,
+      language: string,
+      age?: number
+    } = { 
       eventType: this.event,
       length: this.type,
       tone: this.mood,
       language: this.selectedLanguage
     };
 
-    this.greetingService.generateGreeting(body.eventType, body.tone, body.length, body.language)
+    // Add age only if the event is a birthday
+    if (eventType === 'birthday' && this.age !== null) {
+      body.age = this.age;
+    }
+
+    this.greetingService.generateGreeting(body)
       .subscribe({
         next: (response) => {
           this.blessing = response.greeting;
@@ -91,9 +102,9 @@ loading: any;
           console.error('Error occurred:', error);
         }
       });
-  }
 
-  requestAnother(): void {
+
+  }  requestAnother(): void {
     this.blessing = ''; // איפוס הברכה
   }
 

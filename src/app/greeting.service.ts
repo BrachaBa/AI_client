@@ -11,9 +11,8 @@ export class GreetingService {
 
   constructor(private http: HttpClient) { }
 
-  generateGreeting(eventType: string, tone: string, length: string, language: string): Observable<any> {
-    const body = { eventType, tone, length, language };
-    console.log('Sending request:', body); // לוג לבדיקה
+  generateGreeting(body :any): Observable<any> {
+    console.log('Sending request:', body); // Log for checking
     return this.http.post<any>(this.apiUrl, body);
   }
 }
