@@ -13,9 +13,9 @@ declare const gapi: any;
   imports: [CommonModule, FormsModule]
 })
 export class MainScreenComponent implements AfterViewInit {
-showAlert() {
-throw new Error('Method not implemented.');
-}
+  showAlert() {
+    throw new Error('Method not implemented.');
+  }
   event: string = '';
   age: number | null = null;
   type: string = '';
@@ -25,7 +25,7 @@ throw new Error('Method not implemented.');
   customEvent: string = '';
   customMood: string = '';
   customType: string = '';
-loading: any;
+  loading: any;
 
   constructor(private greetingService: GreetingService) { }
 
@@ -75,14 +75,8 @@ loading: any;
 
   generateBlessing(): void {
     const eventType = this.event === 'other' ? this.customEvent : this.event;
-    const body: {
-      eventType: string,
-      length: string,
-      tone: string,
-      language: string,
-      age?: number
-    } = { 
-      eventType: this.event,
+    const body: any = {
+      eventType: eventType,
       length: this.type,
       tone: this.mood,
       language: this.selectedLanguage
@@ -103,8 +97,7 @@ loading: any;
         }
       });
 
-
-  }  requestAnother(): void {
+  } requestAnother(): void {
     this.blessing = ''; // איפוס הברכה
   }
 
@@ -113,5 +106,5 @@ loading: any;
     console.log(`Selected language: ${language}`);
   }
 
-  
+
 }
