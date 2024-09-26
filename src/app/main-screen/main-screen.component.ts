@@ -30,10 +30,6 @@ export class MainScreenComponent implements AfterViewInit {
   customType: string = '';
   loading: any;
 
-  ngOnInit() {
-    console.log('MainScreenComponent initialized');
-  }  
-
   constructor(private greetingService: GreetingService) { }
   ngAfterViewInit() {
     if (typeof window !== 'undefined' && typeof document !== 'undefined') {
