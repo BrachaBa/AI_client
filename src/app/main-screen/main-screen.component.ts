@@ -74,6 +74,7 @@ loading: any;
   }
 
   generateBlessing(): void {
+    const eventType = this.event === 'other' ? this.customEvent : this.event;
     const body = { 
       eventType: this.event,
       length: this.type,

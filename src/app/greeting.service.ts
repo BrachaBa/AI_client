@@ -13,6 +13,7 @@ export class GreetingService {
 
   generateGreeting(eventType: string, tone: string, length: string, language: string): Observable<any> {
     const body = { eventType, tone, length, language };
+    console.log('Sending request:', body); // לוג לבדיקה
     return this.http.post<any>(this.apiUrl, body);
   }
 }
