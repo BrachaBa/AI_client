@@ -94,6 +94,7 @@ export class MainScreenComponent implements AfterViewInit {
     }
   
     console.log('Sending request body:', body);
+    alert('body: ' + JSON.stringify(body));
   
     this.greetingService.generateGreeting(body)
       .subscribe({
@@ -101,12 +102,12 @@ export class MainScreenComponent implements AfterViewInit {
           console.log('Received response:', response);
           this.blessing = response.greeting;
         },
+        
         error: (error) => {
           console.error('Error occurred:', error);
         }
       });
   }
-  
   
   requestAnother(): void {
     this.blessing = ''; // איפוס הברכה
@@ -116,6 +117,4 @@ export class MainScreenComponent implements AfterViewInit {
     this.selectedLanguage = language; // קביעת השפה הנבחרת במשתנה
     console.log(`Selected language: ${language}`);
   }
-
-
 }
