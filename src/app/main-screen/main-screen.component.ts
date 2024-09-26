@@ -74,21 +74,17 @@ export class MainScreenComponent implements AfterViewInit {
   }
 
   generateBlessing(): void {
-    const body: any = { 
-      eventType: this.event,
-      length: this.type,
-      tone: this.mood,
+    const body: any = {
+      eventType: this.event === 'other' ? this.customEvent : this.event,
+      tone: this.event === 'other' ? this.customMood : this.mood,
+      length: this.event === 'other' ? this.customType : this.type,
       language: this.selectedLanguage
     };
-  
-    if (this.event === 'other' && this.customEvent) {
-      body.customEvent = this.customEvent;
-    }
   
     if (this.event === 'birthday' && this.age !== null) {
       body.age = this.age;
     }
-
+  
     this.greetingService.generateGreeting(body)
       .subscribe({
         next: (response) => {
@@ -98,8 +94,9 @@ export class MainScreenComponent implements AfterViewInit {
           console.error('Error occurred:', error);
         }
       });
-
-  } requestAnother(): void {
+  } 
+  
+  requestAnother(): void {
     this.blessing = ''; // איפוס הברכה
   }
 
