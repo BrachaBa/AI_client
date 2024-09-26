@@ -75,13 +75,13 @@ export class MainScreenComponent implements AfterViewInit {
 
   generateBlessing(): void {
     const body: any = {
-      eventType: this.event === 'other' ? this.customEvent : this.event,
-      tone: this.event === 'other' ? this.customMood : this.mood,
-      length: this.event === 'other' ? this.customType : this.type,
+      eventType: this.event == 'other' ? this.customEvent : this.event,
+      tone: this.mood === 'other' ? this.customMood : this.mood,
+      length: this.type === 'other' ? this.customType : this.type,
       language: this.selectedLanguage
     };
   
-    if (this.event === 'birthday' && this.age !== null) {
+    if (this.event == 'birthday' && this.age !== null) {
       body.age = this.age;
     }
   
