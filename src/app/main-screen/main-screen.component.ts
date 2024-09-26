@@ -66,7 +66,7 @@ export class MainScreenComponent implements AfterViewInit {
       console.error('Error occurred during Google sign-in:', error);
     });
   }
-
+  
   generateBlessing(): void {
     const body: any = {
       eventType: this.event === 'other' ? this.customEvent : this.event,
@@ -78,8 +78,8 @@ export class MainScreenComponent implements AfterViewInit {
     if (this.event === 'birthday' && this.age !== null) {
       body.age = this.age;
     }
-
-    console.log('Sending request body:', body); // Add this line for debugging
+  
+    console.log('Sending request body:', body);
   
     this.greetingService.generateGreeting(body)
       .subscribe({
@@ -90,7 +90,8 @@ export class MainScreenComponent implements AfterViewInit {
           console.error('Error occurred:', error);
         }
       });
-  } 
+  }
+  
   
   requestAnother(): void {
     this.blessing = ''; // איפוס הברכה
