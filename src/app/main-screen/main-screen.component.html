@@ -99,15 +99,14 @@
             <option value="anniversary">Anniversary</option>
             <option value="other">Other</option>
           </select>
-          <input *ngIf="event === 'other'" type="text" class="form-control mt-2" [(ngModel)]="customEvent"
-            name="customEvent" placeholder="Enter the desired event">
+          <input *ngIf="event === 'other'" type="text" class="form-control mt-2" [(ngModel)]="customEvent" name="customEvent" placeholder="Enter the desired event">
         </div>
-
+        
         <div *ngIf="event === 'birthday'" class="form-group">
           <label for="age">Age:</label>
           <input type="number" id="age" [(ngModel)]="age" name="age" class="form-control">
         </div>
-
+      
         <div class="form-group">
           <label for="type">Type of Greeting:</label>
           <select id="type" [(ngModel)]="type" name="type" class="form-control">
@@ -116,10 +115,9 @@
             <option value="song">Song</option>
             <option value="other">Other</option>
           </select>
-          <input *ngIf="type === 'other'" type="text" class="form-control mt-2" [(ngModel)]="customType"
-            name="customType" placeholder="Enter the desired type of greeting">
+          <input *ngIf="type === 'other'" type="text" class="form-control mt-2" [(ngModel)]="customType" name="customType" placeholder="Enter the desired type of greeting">
         </div>
-
+      
         <div class="form-group">
           <label for="mood">Mood:</label>
           <select id="mood" [(ngModel)]="mood" name="mood" class="form-control">
@@ -128,13 +126,12 @@
             <option value="serious">Serious</option>
             <option value="other">Other</option>
           </select>
-          <input *ngIf="mood === 'other'" type="text" class="form-control mt-2" [(ngModel)]="customMood"
-            name="customMood" placeholder="Enter the desired mood">
+          <input *ngIf="mood === 'other'" type="text" class="form-control mt-2" [(ngModel)]="customMood" name="customMood" placeholder="Enter the desired mood">
         </div>
-
+      
         <button type="submit" class="btn btn-primary mt-3">Generate Greeting</button>
       </form>
-
+    
       <div *ngIf="blessing" class="mt-4">
         <h2>Your Greeting:</h2>
         <p>{{ blessing }}</p>

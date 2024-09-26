@@ -20,21 +20,15 @@ export class MainScreenComponent implements AfterViewInit {
   age: number | null = null;
   type: string = '';
   mood: string = '';
-  selectedLanguage: string = 'hebrew'; // שפת ברירת המחדל
+  selectedLanguage: string = 'hebrew';
   blessing: string | null = null;
+
   customEvent: string = '';
   customMood: string = '';
   customType: string = '';
   loading: any;
 
   constructor(private greetingService: GreetingService) { }
-
-  // ngAfterViewInit(): void {
-  //   this.loadGoogleApi().then(() => {
-  //     this.initGoogleSignIn();
-  //   });
-  // }
-
   ngAfterViewInit() {
     if (typeof window !== 'undefined' && typeof document !== 'undefined') {
       this.loadGoogleApi();
@@ -75,15 +69,17 @@ export class MainScreenComponent implements AfterViewInit {
 
   generateBlessing(): void {
     const body: any = {
-      eventType: this.event == 'other' ? this.customEvent : this.event,
+      eventType: this.event === 'other' ? this.customEvent : this.event,
       tone: this.mood === 'other' ? this.customMood : this.mood,
       length: this.type === 'other' ? this.customType : this.type,
       language: this.selectedLanguage
     };
   
-    if (this.event == 'birthday' && this.age !== null) {
+    if (this.event === 'birthday' && this.age !== null) {
       body.age = this.age;
     }
+
+    console.log('Sending request body:', body); // Add this line for debugging
   
     this.greetingService.generateGreeting(body)
       .subscribe({
