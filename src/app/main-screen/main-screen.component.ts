@@ -94,7 +94,7 @@ export class MainScreenComponent implements AfterViewInit {
     }
   
     console.log('Sending request body:', body);
-    alert('body: ' + JSON.stringify(body));
+    // alert('body: ' + JSON.stringify(body));
   
     this.greetingService.generateGreeting(body)
       .subscribe({
@@ -102,7 +102,7 @@ export class MainScreenComponent implements AfterViewInit {
           console.log('Received response:', response);
           this.blessing = response.greeting;
         },
-        
+
         error: (error) => {
           console.error('Error occurred:', error);
         }
