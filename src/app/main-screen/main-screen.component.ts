@@ -74,16 +74,18 @@ export class MainScreenComponent implements AfterViewInit {
   }
 
   generateBlessing(): void {
-    const eventType = this.event === 'other' ? this.customEvent : this.event;
-    const body: any = {
-      eventType: eventType,
+    const body: any = { 
+      eventType: this.event,
       length: this.type,
       tone: this.mood,
       language: this.selectedLanguage
     };
-
-    // Add age only if the event is a birthday
-    if (eventType === 'birthday' && this.age !== null) {
+  
+    if (this.event === 'other' && this.customEvent) {
+      body.customEvent = this.customEvent;
+    }
+  
+    if (this.event === 'birthday' && this.age !== null) {
       body.age = this.age;
     }
 
