@@ -78,7 +78,7 @@
             name="customMood" placeholder="הזן את האווירה המבוקשת">
         </div>
 
-        <button (click)="generateBlessing()" type="submit" class="btn btn-primary mt-3">כתוב לי ברכה</button>
+        <button type="submit" class="btn btn-primary mt-3">כתוב לי ברכה</button>
       </form>
 
       <div *ngIf="blessing" class="mt-4">
@@ -129,7 +129,7 @@
           <input *ngIf="mood === 'other'" type="text" class="form-control mt-2" [(ngModel)]="customMood" name="customMood" placeholder="Enter the desired mood">
         </div>
       
-        <button (click)="generateBlessing()" type="submit" class="btn btn-primary mt-3">Generate Greeting</button>
+        <button type="submit" class="btn btn-primary mt-3">Generate Greeting</button>
       </form>
     
       <div *ngIf="blessing" class="mt-4">

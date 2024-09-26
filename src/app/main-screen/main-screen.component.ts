@@ -12,10 +12,12 @@ declare const gapi: any;
   standalone: true,
   imports: [CommonModule, FormsModule]
 })
+
 export class MainScreenComponent implements AfterViewInit {
   showAlert() {
     throw new Error('Method not implemented.');
   }
+
   event: string = '';
   age: number | null = null;
   type: string = '';
@@ -27,6 +29,10 @@ export class MainScreenComponent implements AfterViewInit {
   customMood: string = '';
   customType: string = '';
   loading: any;
+
+  ngOnInit() {
+    console.log('MainScreenComponent initialized');
+  }  
 
   constructor(private greetingService: GreetingService) { }
   ngAfterViewInit() {
@@ -67,43 +73,44 @@ export class MainScreenComponent implements AfterViewInit {
     });
   }
 
-generateBlessing(): void {
-  console.log('Generate Blessing button clicked');
-  console.log('Current values:', {
-    event: this.event,
-    customEvent: this.customEvent,
-    mood: this.mood,
-    customMood: this.customMood,
-    type: this.type,
-    customType: this.customType,
-    age: this.age,
-    selectedLanguage: this.selectedLanguage
-  });
-
-  const body: any = {
-    eventType: this.event === 'other' ? this.customEvent : this.event,
-    tone: this.mood === 'other' ? this.customMood : this.mood,
-    length: this.type === 'other' ? this.customType : this.type,
-    language: this.selectedLanguage
-  };
-
-  if (this.event === 'birthday' && this.age !== null) {
-    body.age = this.age;
-  }
-
-  console.log('Sending request body:', body);
-
-  this.greetingService.generateGreeting(body)
-    .subscribe({
-      next: (response) => {
-        console.log('Received response:', response);
-        this.blessing = response.greeting;
-      },
-      error: (error) => {
-        console.error('Error occurred:', error);
-      }
+  generateBlessing(): void {
+    console.log('Generate Blessing button clicked');
+    console.log('Current values:', {
+      event: this.event,
+      customEvent: this.customEvent,
+      mood: this.mood,
+      customMood: this.customMood,
+      type: this.type,
+      customType: this.customType,
+      age: this.age,
+      selectedLanguage: this.selectedLanguage
     });
-}
+  
+    const body: any = {
+      eventType: this.event === 'other' ? this.customEvent : this.event,
+      tone: this.mood === 'other' ? this.customMood : this.mood,
+      length: this.type === 'other' ? this.customType : this.type,
+      language: this.selectedLanguage
+    };
+  
+    if (this.event === 'birthday' && this.age !== null) {
+      body.age = this.age;
+    }
+  
+    console.log('Sending request body:', body);
+  
+    this.greetingService.generateGreeting(body)
+      .subscribe({
+        next: (response) => {
+          console.log('Received response:', response);
+          this.blessing = response.greeting;
+        },
+        error: (error) => {
+          console.error('Error occurred:', error);
+        }
+      });
+  }
+  
   
   requestAnother(): void {
     this.blessing = ''; // איפוס הברכה
