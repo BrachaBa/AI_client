@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { GreetingService } from '../greeting.service';
+import { send } from 'node:process';
 
 declare const gapi: any;
 @Component({
@@ -24,6 +25,8 @@ export class MainScreenComponent implements AfterViewInit {
   mood: string = '';
   selectedLanguage: string = 'hebrew';
   blessing: string | null = null;
+  recipient: string = '';
+  sender: string = '';
 
   customEvent: string = '';
   customMood: string = '';
@@ -79,23 +82,27 @@ export class MainScreenComponent implements AfterViewInit {
       type: this.type,
       customType: this.customType,
       age: this.age,
-      selectedLanguage: this.selectedLanguage
+      selectedLanguage: this.selectedLanguage,
+      recipient: this.recipient,
+      sender: this.sender
     });
-  
+
     const body: any = {
       eventType: this.event === 'other' ? this.customEvent : this.event,
       tone: this.mood === 'other' ? this.customMood : this.mood,
       length: this.type === 'other' ? this.customType : this.type,
-      language: this.selectedLanguage
+      language: this.selectedLanguage,
+      recipient: this.recipient,
+      sender: this.sender
     };
-  
+
     if (this.event === 'birthday' && this.age !== null) {
       body.age = this.age;
     }
-  
+
     console.log('Sending request body:', body);
     // alert('body: ' + JSON.stringify(body));
-  
+
     this.greetingService.generateGreeting(body)
       .subscribe({
         next: (response) => {
@@ -108,7 +115,7 @@ export class MainScreenComponent implements AfterViewInit {
         }
       });
   }
-  
+
   requestAnother(): void {
     this.blessing = ''; // איפוס הברכה
   }
