@@ -28,27 +28,53 @@
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     /* צללית */
   }
+
+  .rtl-input {
+  text-align: right;
+  direction: rtl;
+}
+
+.ltr-input {
+  text-align: left;
+  direction: ltr;
+}
+
+.language-selector {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
 </style>
 
 <div class="container mt-5 page-background">
   <div class="form-container">
-    <h1>{{ selectedLanguage === 'hebrew' ? 'מחולל ברכות לאירועים שונים' : 'Greetings Generator for Different Events' }}
+    <h1 *ngIf="selectedLanguage === 'hebrew'">
+      <span>מחולל ברכות</span><br>
+      <span>לאירועים שונים</span>
     </h1>
+    <h1 *ngIf="selectedLanguage !== 'hebrew'">
+      <span>Greetings Generator</span><br>
+      <span>for Different Events</span>
+    </h1>
+    
     <form (ngSubmit)="generateBlessing()" class="mt-4">
 
       <div class="form-group">
         <label for="recipient">{{ selectedLanguage === 'hebrew' ? 'נמען' : 'Recipient' }}</label>
         <input type="text" class="form-control mt-2" [(ngModel)]="recipient" name="recipient"
-          [placeholder]="selectedLanguage === 'hebrew' ? 'שם הנמען אליו תשלח הברכה' : 'Name of the recipient'">
+          [placeholder]="selectedLanguage === 'hebrew' ? 'שם הנמען אליו תשלח הברכה' : 'Name of the recipient'"
+          [ngClass]="{'rtl-input': selectedLanguage === 'hebrew', 'ltr-input': selectedLanguage !== 'hebrew'}">
 
         <label for="sender">{{ selectedLanguage === 'hebrew' ? 'שולח' : 'Sender' }}</label>
         <input type="text" class="form-control mt-2" [(ngModel)]="sender" name="sender"
-          [placeholder]="selectedLanguage === 'hebrew' ? 'שם המאחל השולח' : 'Name of the sender'">
+          [placeholder]="selectedLanguage === 'hebrew' ? 'שם המאחל השולח' : 'Name of the sender'"
+          [ngClass]="{'rtl-input': selectedLanguage === 'hebrew', 'ltr-input': selectedLanguage !== 'hebrew'}">
       </div>
-      
+
       <div class="form-group">
         <label for="event">{{ selectedLanguage === 'hebrew' ? 'בחירת אירוע:' : 'Choose Event:' }}</label>
-        <select id="event" [(ngModel)]="event" name="event" class="form-control">
+        <select id="event" [(ngModel)]="event" name="event" class="form-control"
+        [ngClass]="{'rtl-input': selectedLanguage === 'hebrew', 'ltr-input': selectedLanguage !== 'hebrew'}">
           <option value="birthday">{{ selectedLanguage === 'hebrew' ? 'יום הולדת' : 'Birthday' }}</option>
           <option value="wedding">{{ selectedLanguage === 'hebrew' ? 'חתונה' : 'Wedding' }}</option>
           <option value="anniversary">{{ selectedLanguage === 'hebrew' ? 'יום נישואין' : 'Anniversary' }}</option>
@@ -61,12 +87,14 @@
 
       <div *ngIf="event === 'birthday'" class="form-group">
         <label for="age">{{ selectedLanguage === 'hebrew' ? 'גיל:' : 'Age:' }}</label>
-        <input type="number" id="age" [(ngModel)]="age" name="age" class="form-control">
+        <input type="number" id="age" [(ngModel)]="age" name="age" class="form-control"
+        [ngClass]="{'rtl-input': selectedLanguage === 'hebrew', 'ltr-input': selectedLanguage !== 'hebrew'}">
       </div>
 
       <div class="form-group">
         <label for="type">{{ selectedLanguage === 'hebrew' ? 'סוג הברכה:' : 'Type of Greeting:' }}</label>
-        <select id="type" [(ngModel)]="type" name="type" class="form-control">
+        <select id="type" [(ngModel)]="type" name="type" class="form-control"
+        [ngClass]="{'rtl-input': selectedLanguage === 'hebrew', 'ltr-input': selectedLanguage !== 'hebrew'}">
           <option value="short">{{ selectedLanguage === 'hebrew' ? 'קצרה' : 'Short' }}</option>
           <option value="long">{{ selectedLanguage === 'hebrew' ? 'ארוכה' : 'Long' }}</option>
           <option value="song">{{ selectedLanguage === 'hebrew' ? 'שיר' : 'Song' }}</option>
@@ -78,7 +106,8 @@
 
       <div class="form-group">
         <label for="mood">{{ selectedLanguage === 'hebrew' ? 'אווירה:' : 'Mood:' }}</label>
-        <select id="mood" [(ngModel)]="mood" name="mood" class="form-control">
+        <select id="mood" [(ngModel)]="mood" name="mood" class="form-control"
+        [ngClass]="{'rtl-input': selectedLanguage === 'hebrew', 'ltr-input': selectedLanguage !== 'hebrew'}">
           <option value="happy">{{ selectedLanguage === 'hebrew' ? 'שמחה' : 'Happy' }}</option>
           <option value="funny">{{ selectedLanguage === 'hebrew' ? 'מצחיקה' : 'Funny' }}</option>
           <option value="serious">{{ selectedLanguage === 'hebrew' ? 'רצינית' : 'Serious' }}</option>
